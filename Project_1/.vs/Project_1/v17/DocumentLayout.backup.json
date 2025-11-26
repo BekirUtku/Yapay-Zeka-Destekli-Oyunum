@@ -1,0 +1,768 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\Project_1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\helathpotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\helathpotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|c:\\users\\asus\\project_1\\assets\\code\\f\u0131ghtai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\f\u0131ghtai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\firedamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\firedamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\fight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\fight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\fallingtile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\fallingtile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\enemycombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\enemycombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\characterhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\characterhealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\menuscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\menuscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\mainmenuloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\mainmenuloader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\gameovermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\gameovermanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\poisonpotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\poisonpotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\playerinvisibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\playerinvisibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\playercombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\playercombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\PlayerController1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\PlayerController1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\infopanelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\infopanelmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\Code\\InfoPanelManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Code\\InfoPanelManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\PlayerCombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\PlayerCombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|C:\\Users\\ASUS\\Project_1\\assets\\code\\playerrescue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0689CFC-CB3A-E5D9-DF6B-4F9ABFAC2AE2}|Assembly-CSharp.csproj|solutionrelative:assets\\code\\playerrescue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\MainMenuLoader1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\MainMenuLoader1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Library\\PackageCache\\com.unity.2d.tilemap@91afae292a4e\\Editor\\GridEditorUtility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.unity.2d.tilemap@91afae292a4e\\Editor\\GridEditorUtility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\RescueTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\RescueTrigger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\MainMenuLoader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\MainMenuLoader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\PlayerRescue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\PlayerRescue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\EnemyAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\EnemyAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\WarriorAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\WarriorAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\YellowPotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\YellowPotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\GameOverManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\GameOverManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\F\u0131ghtCombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\F\u0131ghtCombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\Warrior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Warrior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\F\u0131ghtAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\F\u0131ghtAI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\HealthBar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\HealthBar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\CharacterHealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\CharacterHealth.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\FireDamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\FireDamage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\Enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Enemy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\EnemyCombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\EnemyCombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\WarriorCombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\WarriorCombat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\FallingTile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\FallingTile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\FallingTile2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\FallingTile2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\PlayerInvisibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\PlayerInvisibility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\Fight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Fight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\MenuScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\MenuScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\HelathPotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\HelathPotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ASUS\\Project_1\\Assets\\PoisonPotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\PoisonPotion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FireDamage.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\FireDamage.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\FireDamage.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\FireDamage.cs",
+              "RelativeToolTip": "Assets\\Code\\FireDamage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T19:46:05.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Fight.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\Fight.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\Fight.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\Fight.cs",
+              "RelativeToolTip": "Assets\\Code\\Fight.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T19:45:59.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\Enemy.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\Enemy.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\Enemy.cs",
+              "RelativeToolTip": "Assets\\Code\\Enemy.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAzwCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T11:16:40.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FallingTile.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\FallingTile.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\FallingTile.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\FallingTile.cs",
+              "RelativeToolTip": "Assets\\Code\\FallingTile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T11:15:37.258Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PoisonPotion.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PoisonPotion.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\PoisonPotion.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PoisonPotion.cs",
+              "RelativeToolTip": "Assets\\Code\\PoisonPotion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T11:10:12.588Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "PlayerInvisibility.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PlayerInvisibility.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\PlayerInvisibility.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PlayerInvisibility.cs",
+              "RelativeToolTip": "Assets\\Code\\PlayerInvisibility.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAiwCoAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T11:06:55.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "PlayerCombat.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PlayerCombat.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\PlayerCombat.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PlayerCombat.cs",
+              "RelativeToolTip": "Assets\\Code\\PlayerCombat.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCYAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T10:59:32.221Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Code\\PlayerController.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAADwvzYAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T10:06:48.23Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CharacterHealth.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\CharacterHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\CharacterHealth.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\CharacterHealth.cs",
+              "RelativeToolTip": "Assets\\Code\\CharacterHealth.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T10:06:03.487Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\EnemyAI.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\Code\\EnemyAI.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAIwEQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T07:53:38.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HelathPotion.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\HelathPotion.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\HelathPotion.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\HelathPotion.cs",
+              "RelativeToolTip": "Assets\\Code\\HelathPotion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T11:10:47.024Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "F\u0131ghtAI.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\F\u0131ghtAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\F\u0131ghtAI.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\F\u0131ghtAI.cs",
+              "RelativeToolTip": "Assets\\Code\\F\u0131ghtAI.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T19:46:27.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EnemyCombat.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\EnemyCombat.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\EnemyCombat.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\EnemyCombat.cs",
+              "RelativeToolTip": "Assets\\Code\\EnemyCombat.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAADwvx4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T19:08:09.315Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "GameOverManager.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\GameOverManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\GameOverManager.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\GameOverManager.cs",
+              "RelativeToolTip": "Assets\\Code\\GameOverManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T11:16:35.041Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MainMenuLoader.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\MainMenuLoader.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\MainMenuLoader.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\MainMenuLoader.cs",
+              "RelativeToolTip": "Assets\\Code\\MainMenuLoader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T11:18:57.573Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MenuScript.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\MenuScript.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\MenuScript.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\MenuScript.cs",
+              "RelativeToolTip": "Assets\\Code\\MenuScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T11:19:06.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "InfoPanelManager.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\InfoPanelManager.cs",
+              "RelativeDocumentMoniker": "Assets\\InfoPanelManager.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\InfoPanelManager.cs",
+              "RelativeToolTip": "Assets\\InfoPanelManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T07:23:22.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "MainMenuLoader1.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\MainMenuLoader1.cs",
+              "RelativeDocumentMoniker": "Assets\\MainMenuLoader1.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\MainMenuLoader1.cs",
+              "RelativeToolTip": "Assets\\MainMenuLoader1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T10:28:33.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "PlayerController1.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerController1.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerController1.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerController1.cs",
+              "RelativeToolTip": "Assets\\PlayerController1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T10:26:59.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "GridEditorUtility.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Library\\PackageCache\\com.unity.2d.tilemap@91afae292a4e\\Editor\\GridEditorUtility.cs",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.unity.2d.tilemap@91afae292a4e\\Editor\\GridEditorUtility.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Library\\PackageCache\\com.unity.2d.tilemap@91afae292a4e\\Editor\\GridEditorUtility.cs",
+              "RelativeToolTip": "Library\\PackageCache\\com.unity.2d.tilemap@91afae292a4e\\Editor\\GridEditorUtility.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAEwCMAAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T10:25:06.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "MainMenuLoader.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\MainMenuLoader.cs",
+              "RelativeDocumentMoniker": "Assets\\MainMenuLoader.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\MainMenuLoader.cs",
+              "RelativeToolTip": "Assets\\MainMenuLoader.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T10:02:23.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\PlayerController.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-10T20:17:07.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "InfoPanelManager.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\InfoPanelManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\InfoPanelManager.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\InfoPanelManager.cs",
+              "RelativeToolTip": "Assets\\Code\\InfoPanelManager.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T07:22:52.461Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PlayerRescue.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerRescue.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerRescue.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerRescue.cs",
+              "RelativeToolTip": "Assets\\PlayerRescue.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAUwEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T21:47:11.883Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\EnemyAI.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\EnemyAI.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAcwB0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-11T08:25:08.287Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "PlayerCombat.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerCombat.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerCombat.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerCombat.cs",
+              "RelativeToolTip": "Assets\\PlayerCombat.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-11T18:46:43.338Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "PlayerRescue.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PlayerRescue.cs",
+              "RelativeDocumentMoniker": "Assets\\Code\\PlayerRescue.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Code\\PlayerRescue.cs",
+              "RelativeToolTip": "Assets\\Code\\PlayerRescue.cs",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAUwEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-19T10:36:26.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "WarriorAI.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\WarriorAI.cs",
+              "RelativeDocumentMoniker": "Assets\\WarriorAI.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\WarriorAI.cs",
+              "RelativeToolTip": "Assets\\WarriorAI.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBIAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T16:05:39.075Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "YellowPotion.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\YellowPotion.cs",
+              "RelativeDocumentMoniker": "Assets\\YellowPotion.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\YellowPotion.cs",
+              "RelativeToolTip": "Assets\\YellowPotion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T18:31:27.763Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "GameOverManager.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\GameOverManager.cs",
+              "RelativeDocumentMoniker": "Assets\\GameOverManager.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\GameOverManager.cs",
+              "RelativeToolTip": "Assets\\GameOverManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T19:04:46.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "F\u0131ghtCombat.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\F\u0131ghtCombat.cs",
+              "RelativeDocumentMoniker": "Assets\\F\u0131ghtCombat.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\F\u0131ghtCombat.cs",
+              "RelativeToolTip": "Assets\\F\u0131ghtCombat.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAiwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T11:02:08.869Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Warrior.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Warrior.cs",
+              "RelativeDocumentMoniker": "Assets\\Warrior.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Warrior.cs",
+              "RelativeToolTip": "Assets\\Warrior.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-04T23:55:03.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "F\u0131ghtAI.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\F\u0131ghtAI.cs",
+              "RelativeDocumentMoniker": "Assets\\F\u0131ghtAI.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\F\u0131ghtAI.cs",
+              "RelativeToolTip": "Assets\\F\u0131ghtAI.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T09:27:18.222Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "HealthBar.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\HealthBar.cs",
+              "RelativeDocumentMoniker": "Assets\\HealthBar.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\HealthBar.cs",
+              "RelativeToolTip": "Assets\\HealthBar.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T09:39:06.377Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "CharacterHealth.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\CharacterHealth.cs",
+              "RelativeDocumentMoniker": "Assets\\CharacterHealth.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\CharacterHealth.cs",
+              "RelativeToolTip": "Assets\\CharacterHealth.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAUwGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T09:47:56.388Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "FireDamage.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\FireDamage.cs",
+              "RelativeDocumentMoniker": "Assets\\FireDamage.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\FireDamage.cs",
+              "RelativeToolTip": "Assets\\FireDamage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-07T09:28:21.808Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "RescueTrigger.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\RescueTrigger.cs",
+              "RelativeDocumentMoniker": "Assets\\RescueTrigger.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\RescueTrigger.cs",
+              "RelativeToolTip": "Assets\\RescueTrigger.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-18T14:33:33.029Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Enemy.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Enemy.cs",
+              "RelativeDocumentMoniker": "Assets\\Enemy.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Enemy.cs",
+              "RelativeToolTip": "Assets\\Enemy.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-12T14:46:04.523Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "EnemyCombat.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\EnemyCombat.cs",
+              "RelativeDocumentMoniker": "Assets\\EnemyCombat.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\EnemyCombat.cs",
+              "RelativeToolTip": "Assets\\EnemyCombat.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwBwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-26T10:12:04.731Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "WarriorCombat.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\WarriorCombat.cs",
+              "RelativeDocumentMoniker": "Assets\\WarriorCombat.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\WarriorCombat.cs",
+              "RelativeToolTip": "Assets\\WarriorCombat.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAxwAUAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T16:32:01.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "FallingTile.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\FallingTile.cs",
+              "RelativeDocumentMoniker": "Assets\\FallingTile.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\FallingTile.cs",
+              "RelativeToolTip": "Assets\\FallingTile.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAiwBoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T16:42:46.484Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "FallingTile2.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\FallingTile2.cs",
+              "RelativeDocumentMoniker": "Assets\\FallingTile2.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\FallingTile2.cs",
+              "RelativeToolTip": "Assets\\FallingTile2.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBIAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T18:19:20.283Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "PlayerInvisibility.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerInvisibility.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerInvisibility.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\PlayerInvisibility.cs",
+              "RelativeToolTip": "Assets\\PlayerInvisibility.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T19:55:56.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Fight.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\Fight.cs",
+              "RelativeDocumentMoniker": "Assets\\Fight.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\Fight.cs",
+              "RelativeToolTip": "Assets\\Fight.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAYwCQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-02T21:09:49.22Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "MenuScript.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\MenuScript.cs",
+              "RelativeDocumentMoniker": "Assets\\MenuScript.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\MenuScript.cs",
+              "RelativeToolTip": "Assets\\MenuScript.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T21:55:01.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "HelathPotion.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\HelathPotion.cs",
+              "RelativeDocumentMoniker": "Assets\\HelathPotion.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\HelathPotion.cs",
+              "RelativeToolTip": "Assets\\HelathPotion.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAEwA0AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T12:15:55.228Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "PoisonPotion.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Project_1\\Assets\\PoisonPotion.cs",
+              "RelativeDocumentMoniker": "Assets\\PoisonPotion.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Project_1\\Assets\\PoisonPotion.cs",
+              "RelativeToolTip": "Assets\\PoisonPotion.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-03T20:26:15.905Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
