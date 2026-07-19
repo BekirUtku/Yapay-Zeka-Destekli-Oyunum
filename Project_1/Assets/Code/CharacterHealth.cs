@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour
@@ -8,11 +8,14 @@ public class CharacterHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
-    //Düþma Hareketi
+    //DÃ¼ÅŸma Hareketi
     public bool enemyattack;
     public float enemytimer;
 
     public Animator anim;
+
+    // Ã–lÃ¼m bir kez iÅŸlensin; birden fazla DelayedGameOver coroutine'i baÅŸlamasÄ±n.
+    private bool isDead = false;
 
 
     void Start()
@@ -42,19 +45,13 @@ public class CharacterHealth : MonoBehaviour
         }
     }
 
-    void CharacterDamage()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            enemyattack = false;
-        }
-    }
-
     public void TakeDamage(int damage)
     {
+        if (isDead) return;
+
         if (enemyattack)
         {
-            currentHealth -= 20;
+            currentHealth -= damage;
             enemyattack = false;
             anim.SetTrigger("isHurt");
         }
@@ -64,42 +61,42 @@ public class CharacterHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            isDead = true;
 
-            // Önce animasyonu baþlat
+            // Ã–nce animasyonu baÅŸlat
             anim.SetBool("isDead", true);
 
-            // GameOver panelini gecikmeli aç
+            // GameOver panelini gecikmeli aÃ§
             StartCoroutine(DelayedGameOver());
         }
     }
 
-    void Die()
-    {
-        anim.SetBool("isDead", true);
-        Destroy(gameObject, 2f);
-    }
     public void Heal(int amount)
     {
+        if (isDead) return;
+
         currentHealth += amount;
-        currentHealth = Mathf.Min(currentHealth, maxHealth); // max saðlýðý aþmasýn
-        healthBar.SetHealth(currentHealth); // health bar’ý güncelle
+        currentHealth = Mathf.Min(currentHealth, maxHealth); // max saÄŸlÄ±ÄŸÄ± aÅŸmasÄ±n
+        healthBar.SetHealth(currentHealth); // health barâ€™Ä± gÃ¼ncelle
     }
 
     void Update()
     {
         EnemyAttackSpacing();
-        CharacterDamage();
 
+#if UNITY_EDITOR
+        // Test amaÃ§lÄ± hasar tuÅŸu - yalnÄ±zca Editor'de derlenir, build'e girmez.
         if (Input.GetKeyDown(KeyCode.Z))
         {
             TakeDamage(20);
         }
+#endif
     }
     private IEnumerator DelayedGameOver()
     {
         yield return new WaitForSecondsRealtime(1.5f);
 
-        // Player scriptindeki Die() fonksiyonunu çaðýr
-        GetComponent<NewMonoBehaviourScript>().Die();
+        // Player scriptindeki Die() fonksiyonunu Ã§aÄŸÄ±r
+        GetComponent<PlayerController>().Die();
     }
 }

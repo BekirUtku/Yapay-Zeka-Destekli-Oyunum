@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuLoader : MonoBehaviour
 {
     public void LoadMainMenu()
     {
-        Time.timeScale = 1f; // Eğer oyun durmuşsa tekrar başlat
-        SceneManager.LoadScene("Menu"); // Sahne adını Build Settings'e göre 
+        Time.timeScale = 1f; // EÄŸer oyun durmuÅŸsa tekrar baÅŸlat
+        SceneManager.LoadScene("Menu"); // Sahne adÄ±nÄ± Build Settings'e gÃ¶re 
     }
 }

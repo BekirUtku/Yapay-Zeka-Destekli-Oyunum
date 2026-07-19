@@ -32,7 +32,12 @@ public class Warrior : MonoBehaviour
 
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
-        warriorai.followspeed = 0;
+        // Olurken hareketi durdur (Enemy ile ayni davranis).
+        if (warriorai != null)
+        {
+            warriorai.followspeed = 0;
+            warriorai.enabled = false;
+        }
         Destroy(gameObject, 1.7f);
     }
 

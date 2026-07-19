@@ -1,11 +1,11 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using TMPro;
 
 public class PlayerRescue : MonoBehaviour
 {
     public Transform rescueTarget;
-    public TextMeshProUGUI rescueMessageUI; // "F'ye basýlý tutarak kurtar" mesajý
-    public GameObject winPanel;             // "Kazandýnýz" paneli
+    public TextMeshProUGUI rescueMessageUI; // "F'ye basÄ±lÄ± tutarak kurtar" mesajÄ±
+    public GameObject winPanel;             // "KazandÄ±nÄ±z" paneli
     public float rescueDistance = 5f;
     public float holdTime = 2f;
 
@@ -15,21 +15,28 @@ public class PlayerRescue : MonoBehaviour
     void Start()
     {
         if (rescueMessageUI != null)
-            rescueMessageUI.gameObject.SetActive(false); // Yazý baþta gizli
+            rescueMessageUI.gameObject.SetActive(false); // YazÄ± baÅŸta gizli
 
         if (winPanel != null)
-            winPanel.SetActive(false); // Kazanma paneli baþta kapalý
+            winPanel.SetActive(false); // Kazanma paneli baÅŸta kapalÄ±
     }
 
     void Update()
     {
         if (gameEnded) return;
 
+        if (rescueTarget == null)
+        {
+            Debug.LogWarning($"{name}: PlayerRescue.rescueTarget atanmamis, script devre disi birakildi.", this);
+            enabled = false;
+            return;
+        }
+
         float distance = Vector2.Distance(transform.position, rescueTarget.position);
 
         if (distance <= rescueDistance)
         {
-            // UI yazýyý göster
+            // UI yazÄ±yÄ± gÃ¶ster
             if (rescueMessageUI != null && !rescueMessageUI.gameObject.activeSelf)
                 rescueMessageUI.gameObject.SetActive(true);
 
@@ -47,7 +54,7 @@ public class PlayerRescue : MonoBehaviour
         }
         else
         {
-            // UI yazýyý gizle
+            // UI yazÄ±yÄ± gizle
             if (rescueMessageUI != null && rescueMessageUI.gameObject.activeSelf)
                 rescueMessageUI.gameObject.SetActive(false);
 
@@ -60,7 +67,7 @@ public class PlayerRescue : MonoBehaviour
         gameEnded = true;
 
         if (winPanel != null)
-            winPanel.SetActive(true); // Kazandýnýz panelini aç
+            winPanel.SetActive(true); // KazandÄ±nÄ±z panelini aÃ§
 
         Time.timeScale = 0f; // Oyunu durdur
         Debug.Log("Oyun Bitti!");

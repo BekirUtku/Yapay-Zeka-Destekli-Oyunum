@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class WarriorAI : MonoBehaviour
 {
@@ -16,12 +16,19 @@ public class WarriorAI : MonoBehaviour
 
     WarriorCombat warriorcombat;
 
-    public LayerMask playerLayerMask; // Yalnýzca bu layer'daki objeleri tarayacak
+    public LayerMask playerLayerMask; // YalnÄ±zca bu layer'daki objeleri tarayacak
 
     void Start()
     {
         Physics2D.queriesStartInColliders = false;
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj == null)
+        {
+            Debug.LogWarning($"{name}: Sahnede 'Player' etiketli obje yok, WarriorAI devre disi birakildi.", this);
+            enabled = false;
+            return;
+        }
+        target = playerObj.transform;
         anim = GetComponent<Animator>();
         warriorcombat = GetComponent<WarriorCombat>();
     }
@@ -45,7 +52,7 @@ public class WarriorAI : MonoBehaviour
 
     void WarriorAi()
     {
-        // Sadece belirli layer'larý tarayan raycast
+        // Sadece belirli layer'larÄ± tarayan raycast
         RaycastHit2D hitEnemy = Physics2D.Raycast(transform.position, -transform.right, distance, playerLayerMask);
 
         if (hitEnemy.collider != null)
@@ -65,7 +72,7 @@ public class WarriorAI : MonoBehaviour
 
     void WarriorFollow()
     {
-        Vector3 targetPosition = new Vector3(target.position.x, gameObject.transform.position.y, target.position.x);
+        Vector3 targetPosition = new Vector3(target.position.x, gameObject.transform.position.y, transform.position.z);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, followspeed * Time.deltaTime);
     }
 }

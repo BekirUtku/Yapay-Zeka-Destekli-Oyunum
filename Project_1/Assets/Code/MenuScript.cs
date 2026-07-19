@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuScript : MonoBehaviour
@@ -12,7 +12,7 @@ public class MenuScript : MonoBehaviour
     public void QuitButton()
     {
         Application.Quit();
-        Debug.Log("Oyundan Çýkýldý");
+        Debug.Log("Oyundan Ã‡Ä±kÄ±ldÄ±");
     }
 
 }

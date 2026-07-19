@@ -8,6 +8,12 @@ public class FallingTile : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (rb == null)
+        {
+            Debug.LogWarning($"{name}: Rigidbody2D yok, dusen platform scripti devre disi birakildi.", this);
+            enabled = false;
+            return;
+        }
         rb.bodyType = RigidbodyType2D.Static;
     }
 

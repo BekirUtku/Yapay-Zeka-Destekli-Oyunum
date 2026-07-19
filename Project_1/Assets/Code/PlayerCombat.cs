@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
@@ -9,11 +10,23 @@ public class PlayerCombat : MonoBehaviour
     public int attachDamage = 40;
 
 
+    private readonly List<Collider2D> hitBuffer = new List<Collider2D>();
+    private ContactFilter2D hitFilter;
+
     public void DamageEnemy()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(atachPoint.position, attachRange, enemyLayers);
+        if (atachPoint == null)
+        {
+            return;
+        }
 
-        foreach (Collider2D enemy in hitEnemies)
+        hitFilter.useLayerMask = true;
+        hitFilter.layerMask = enemyLayers;
+        hitFilter.useTriggers = Physics2D.queriesHitTriggers;
+
+        Physics2D.OverlapCircle(atachPoint.position, attachRange, hitFilter, hitBuffer);
+
+        foreach (Collider2D enemy in hitBuffer)
         {
             Fight fightScript = enemy.GetComponent<Fight>();
             if (fightScript != null)

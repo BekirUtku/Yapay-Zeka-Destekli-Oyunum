@@ -19,11 +19,28 @@ public class EnemyAI : MonoBehaviour
 
     EnemyCombat enemycombat;
 
+    [Tooltip("Raycast yalnizca bu katmanlari gorur. FightAI/WarriorAI ile ayni: Player.")]
+    public LayerMask playerLayerMask; // Yalnızca bu layer'daki objeleri tarayacak
+
     void Start()
     {
         Physics2D.queriesStartInColliders = false;
 
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        // Inspector'da atanmadiysa 'Player' katmanina dus ve uyar.
+        if (playerLayerMask == 0)
+        {
+            playerLayerMask = LayerMask.GetMask("Player");
+            Debug.LogWarning($"{name}: EnemyAI.playerLayerMask atanmamis, otomatik olarak 'Player' katmanina ayarlandi.", this);
+        }
+
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj == null)
+        {
+            Debug.LogWarning($"{name}: Sahnede 'Player' etiketli obje yok, EnemyAI devre disi birakildi.", this);
+            enabled = false;
+            return;
+        }
+        target = playerObj.transform;
         anim = GetComponent<Animator>();
 
         enemycombat = GetComponent<EnemyCombat>();
@@ -51,7 +68,7 @@ public class EnemyAI : MonoBehaviour
     }
     void EnemyAi()
     {
-        RaycastHit2D hitEnemy = Physics2D.Raycast(transform.position, -transform.right, distance);
+        RaycastHit2D hitEnemy = Physics2D.Raycast(transform.position, -transform.right, distance, playerLayerMask);
 
         if (hitEnemy.collider != null)
         {
@@ -71,7 +88,7 @@ public class EnemyAI : MonoBehaviour
 
     void EnemyFollow()
     {
-        Vector3 targetPosition = new Vector3(target.position.x, gameObject.transform.position.y, target.position.x);
+        Vector3 targetPosition = new Vector3(target.position.x, gameObject.transform.position.y, transform.position.z);
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, followspeed * Time.deltaTime);
     }
 }

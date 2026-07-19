@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FireDamage : MonoBehaviour
 {
@@ -8,6 +8,25 @@ public class FireDamage : MonoBehaviour
     private bool playerInFire = false;
     private float damageTimer = 0f;
 
+    // Sahnede 11 FireDamage kopyasi var; her hasar tikinde sahne taramak yerine
+    // referansi bir kez Start'ta al.
+    private CharacterHealth playerHealth;
+
+    void Start()
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            playerHealth = player.GetComponent<CharacterHealth>();
+        }
+
+        if (playerHealth == null)
+        {
+            Debug.LogWarning($"{name}: 'Player' etiketli obje veya CharacterHealth bulunamadi, FireDamage devre disi birakildi.", this);
+            enabled = false;
+        }
+    }
+
     void Update()
     {
         if (playerInFire)
@@ -15,16 +34,8 @@ public class FireDamage : MonoBehaviour
             damageTimer -= Time.deltaTime;
             if (damageTimer <= 0f)
             {
-                GameObject player = GameObject.FindGameObjectWithTag("Player");
-                if (player != null)
-                {
-                    CharacterHealth health = player.GetComponent<CharacterHealth>();
-                    if (health != null)
-                    {
-                        health.TakeDamage(damageAmount);
-                        damageTimer = damageInterval;
-                    }
-                }
+                playerHealth.TakeDamage(damageAmount);
+                damageTimer = damageInterval;
             }
         }
     }
@@ -34,7 +45,7 @@ public class FireDamage : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInFire = true;
-            damageTimer = 0f; // Hemen hasar vermesi i�in
+            damageTimer = 0f; // Hemen hasar vermesi için
         }
     }
 

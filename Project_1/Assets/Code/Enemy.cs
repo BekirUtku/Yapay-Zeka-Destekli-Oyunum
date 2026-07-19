@@ -32,6 +32,13 @@ public class Enemy : MonoBehaviour
     {
         anim.SetBool("isDead", true);
 
+        // Olurken hareketi durdur (Fight/Warrior ile ayni davranis).
+        if (enemyai != null)
+        {
+            enemyai.followspeed = 0;
+            enemyai.enabled = false;
+        }
+
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;      
         Destroy(gameObject, 2f);

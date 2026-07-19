@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class YellowPotion : MonoBehaviour
 {
-    public int extraDamage = 20; // Vuruş gücüne eklenecek miktar
+    public int extraDamage = 20; // VuruÅŸ gÃ¼cÃ¼ne eklenecek miktar
 
     private void OnTriggerEnter2D(Collider2D other)
     {

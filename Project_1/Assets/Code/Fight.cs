@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,12 +9,12 @@ public class Fight : MonoBehaviour
     public int maxhealth = 100;
     int currenthealth;
 
-    FýghtAI fýghtai;
+    FightAI fightai;
 
     void Start()
     {
         currenthealth = maxhealth;
-        fýghtai = GetComponent<FýghtAI>();
+        fightai = GetComponent<FightAI>();
     }
 
     public void TakeDamage(int damage)
@@ -34,7 +34,12 @@ public class Fight : MonoBehaviour
 
         this.enabled = false;
         GetComponent<Collider2D>().enabled = false;
-        fýghtai.followspeed = 0;
+        // Olurken hareketi durdur (Enemy ile ayni davranis).
+        if (fightai != null)
+        {
+            fightai.followspeed = 0;
+            fightai.enabled = false;
+        }
         Destroy(gameObject, 1.7f);
     }
 }
