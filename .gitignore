@@ -13,6 +13,13 @@
 *.pidb
 *.booproj
 
+# Unity kisisel ayarlari (makineye ozel, paylasilmamali)
+[Uu]serSettings/
+
+# Kod yedekleri
+_Backup_*/
+
 # OS
 .DS_Store
 Thumbs.db
+desktop.ini

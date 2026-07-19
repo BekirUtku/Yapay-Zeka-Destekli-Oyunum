@@ -47,6 +47,13 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Oyun duraklatildiginda (bilgi paneli, Game Over, kazanma ekrani)
+        // girdi islenmesin ve fizik sorgulari bosa calismasin.
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            return;
+        }
+
         // Girdi Update'te okunur; FixedUpdate'te okumak tek karelik basislari kacirir.
         horizontal = Input.GetAxis("Horizontal");
         moveInput = Input.GetAxisRaw("Horizontal");

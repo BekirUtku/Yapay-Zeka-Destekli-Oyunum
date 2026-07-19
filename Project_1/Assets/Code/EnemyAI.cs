@@ -48,6 +48,13 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
+        // Oyun duraklatildiginda (bilgi paneli, Game Over, kazanma ekrani)
+        // girdi islenmesin ve fizik sorgulari bosa calismasin.
+        if (Mathf.Approximately(Time.timeScale, 0f))
+        {
+            return;
+        }
+
         EnemyAi();
     }
     void EnemyMove()
