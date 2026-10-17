@@ -41,6 +41,7 @@ public abstract class EnemyHealthBase : MonoBehaviour
     void Die()
     {
         isDead = true;
+        GameSession.RegisterKill();
         anim.SetBool("isDead", true);
 
         // Olurken hareketi durdur.

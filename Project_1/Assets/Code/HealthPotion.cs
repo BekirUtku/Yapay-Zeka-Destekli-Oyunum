@@ -12,6 +12,7 @@ public class HealthPotion : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.Heal(healAmount);
+                GameHUD.Toast($"+{healAmount} Can", UITheme.Success);
             }
 
             Destroy(gameObject); 

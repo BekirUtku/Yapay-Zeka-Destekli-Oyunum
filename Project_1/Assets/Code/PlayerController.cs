@@ -185,6 +185,13 @@ public class PlayerController : MonoBehaviour
         gameOverTriggered = true;
 
         Time.timeScale = 0f;
+        GameSession.MarkEnded();
+
+        // Yeni sonuc ekrani varsa onu ac; yoksa sahnedeki eski panele don.
+        if (GameEndScreen.ShowDefeat())
+        {
+            return;
+        }
 
         if (gameOverPanel != null)
         {

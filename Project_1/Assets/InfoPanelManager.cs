@@ -39,12 +39,24 @@ public class InfoPanelManager : MonoBehaviour
     private bool isOpen;
     private float previousTimeScale = 1f;
 
-    // ---- Renk paleti ----
-    private const string ColTitle = "#FFC94A";
-    private const string ColSection = "#6FC7FF";
-    private const string ColKey = "#FFC94A";
-    private const string ColBody = "#E6E9EF";
-    private const string ColMuted = "#98A2B3";
+    // Duraklatma menusunden acildiysa oyun kapanista da durur, menuye donulur.
+    private bool openedFromPause;
+    private System.Action onClosedFromPause;
+
+    public bool IsOpen => isOpen;
+
+    /// <summary>
+    /// Panelin en son kapandigi kare. ESC hem paneli kapatip hem de ayni karede
+    /// duraklatma menusunu acmasin diye PauseMenu buna bakar.
+    /// </summary>
+    public int LastClosedFrame { get; private set; } = -1;
+
+    // ---- Renk paleti (UITheme ile ayni) ----
+    private const string ColTitle = "#F2F5F8";
+    private const string ColSection = "#4FD1C5";
+    private const string ColKey = "#4FD1C5";
+    private const string ColBody = "#E6EBF0";
+    private const string ColMuted = "#8A96A3";
     private const string ColRed = "#FF6B6B";
     private const string ColGreen = "#7BE38B";
     private const string ColYellow = "#FFD84A";
@@ -71,6 +83,8 @@ public class InfoPanelManager : MonoBehaviour
         {
             canvasGroup = infoPanel.AddComponent<CanvasGroup>();
         }
+
+        ApplyTheme();
 
         if (infoText != null)
         {
@@ -132,12 +146,35 @@ public class InfoPanelManager : MonoBehaviour
         StartAnimation(Animate(0f, 1f, startScale, 1f, false));
     }
 
+    /// <summary>
+    /// Duraklatma menusunden acar. Oyun zaten durdugu icin timeScale'e dokunmaz;
+    /// panel kapaninca onClosed cagrilir.
+    /// </summary>
+    public void OpenFromPause(System.Action onClosed)
+    {
+        if (isOpen || !enabled)
+        {
+            onClosed?.Invoke();
+            return;
+        }
+
+        isOpen = true;
+        openedFromPause = true;
+        onClosedFromPause = onClosed;
+
+        infoPanel.SetActive(true);
+        canvasGroup.blocksRaycasts = true;
+
+        StartAnimation(Animate(0f, 1f, startScale, 1f, false));
+    }
+
     private void Close()
     {
         isOpen = false;
+        LastClosedFrame = Time.frameCount;
         canvasGroup.blocksRaycasts = false;
 
-        if (pauseWhileOpen)
+        if (pauseWhileOpen && !openedFromPause)
         {
             // Her zaman 1'e don. previousTimeScale, panel bir hitstop aninda
             // acildiysa yavaslatilmis degeri tutabilir.
@@ -145,6 +182,36 @@ public class InfoPanelManager : MonoBehaviour
         }
 
         StartAnimation(Animate(canvasGroup.alpha, 0f, 1f, startScale, true));
+
+        if (openedFromPause)
+        {
+            openedFromPause = false;
+            System.Action callback = onClosedFromPause;
+            onClosedFromPause = null;
+            callback?.Invoke();
+        }
+    }
+
+    /// <summary>
+    /// Paneli yeni arayuz temasina uydurur ve HUD'un ustunde cizilmesini saglar.
+    /// Panel eski, sabit piksel boyutlu canvas'ta oldugu icin kendi sirasini alir.
+    /// </summary>
+    private void ApplyTheme()
+    {
+        UnityEngine.UI.Image background = infoPanel.GetComponent<UnityEngine.UI.Image>();
+        if (background != null)
+        {
+            background.color = new Color(0.04f, 0.05f, 0.07f, 0.95f);
+        }
+
+        Canvas overrideCanvas = infoPanel.GetComponent<Canvas>();
+        if (overrideCanvas == null)
+        {
+            overrideCanvas = infoPanel.AddComponent<Canvas>();
+            infoPanel.AddComponent<UnityEngine.UI.GraphicRaycaster>();
+        }
+        overrideCanvas.overrideSorting = true;
+        overrideCanvas.sortingOrder = 55;
     }
 
     private void StartAnimation(IEnumerator routine)
@@ -229,6 +296,7 @@ public class InfoPanelManager : MonoBehaviour
         sb.AppendLine(Row("E", null, "Saldır — dururken ve koşarken farklı animasyon"));
         sb.AppendLine(Row("H", null, "Görünmez ol — kısa süreli, sınırlı hakkın var"));
         sb.AppendLine(Row("F", null, "Basılı tut — son NPC'yi kurtar ve oyunu kazan"));
+        sb.AppendLine(Row("ESC", null, "Duraklat — devam et, yeniden başla, ana menü"));
         sb.AppendLine("<size=14> </size>");
 
         // ---- Iksirler ----

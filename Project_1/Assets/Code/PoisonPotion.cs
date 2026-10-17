@@ -13,6 +13,7 @@ public class PoisonPotion : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(poisonDamage);
+                GameHUD.Toast($"Zehir  -{poisonDamage}", UITheme.Danger);
             }
 
             Destroy(gameObject); // Zehir iksiri yok olsun

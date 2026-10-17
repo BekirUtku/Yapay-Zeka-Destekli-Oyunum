@@ -10,6 +10,11 @@ public class PlayerInvisibility : MonoBehaviour
     private int invisibilityUses = 0; // Kullanım sayacı
     public int maxUses = 2; // En fazla kaç kere kullanılabilir
 
+    /// <summary>Kalan kullanim hakki (HUD gosterir).</summary>
+    public int RemainingUses => Mathf.Max(0, maxUses - invisibilityUses);
+
+    public bool IsInvisible => isInvisible;
+
     private CharacterHealth health;
 
     void Start()

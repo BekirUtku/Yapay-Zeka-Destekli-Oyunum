@@ -12,6 +12,7 @@ public class YellowPotion : MonoBehaviour
             if (combat != null)
             {
                 combat.attackDamage += extraDamage;
+                GameHUD.Toast($"Güç  +{extraDamage}", UITheme.Warning);
             }
 
             Destroy(gameObject); // iksir yok olsun

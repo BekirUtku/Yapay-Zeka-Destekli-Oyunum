@@ -4,8 +4,8 @@ using TMPro;
 public class PlayerRescue : MonoBehaviour
 {
     public Transform rescueTarget;
-    public TextMeshProUGUI rescueMessageUI; // "F'ye basılı tutarak kurtar" mesajı
-    public GameObject winPanel;             // "Kazandınız" paneli
+    public TextMeshProUGUI rescueMessageUI; // "F'ye basılı tutarak kurtar" mesajı (HUD yoksa kullanilir)
+    public GameObject winPanel;             // "Kazandınız" paneli (GameEndScreen yoksa kullanilir)
     public float rescueDistance = 5f;
     public float holdTime = 2f;
 
@@ -13,6 +13,12 @@ public class PlayerRescue : MonoBehaviour
     private bool gameEnded = false;
 
     private CharacterHealth health;
+
+    /// <summary>Oyuncu kurtarma mesafesinde mi? HUD istemi buna bakar.</summary>
+    public bool IsInRange { get; private set; }
+
+    /// <summary>F'yi basili tutma ilerlemesi (0-1).</summary>
+    public float HoldProgress => holdTime <= 0f ? 1f : Mathf.Clamp01(holdTimer / holdTime);
 
     void Start()
     {
@@ -32,8 +38,8 @@ public class PlayerRescue : MonoBehaviour
         // Olum animasyonunun 1.5 saniyesinde kurtarip kazanmak mumkun olmasin.
         if (health != null && health.IsDead)
         {
-            if (rescueMessageUI != null && rescueMessageUI.gameObject.activeSelf)
-                rescueMessageUI.gameObject.SetActive(false);
+            SetInRange(false);
+            holdTimer = 0f;
             return;
         }
 
@@ -48,9 +54,7 @@ public class PlayerRescue : MonoBehaviour
 
         if (distance <= rescueDistance)
         {
-            // UI yazıyı göster
-            if (rescueMessageUI != null && !rescueMessageUI.gameObject.activeSelf)
-                rescueMessageUI.gameObject.SetActive(true);
+            SetInRange(true);
 
             if (Input.GetKey(KeyCode.F))
             {
@@ -66,22 +70,32 @@ public class PlayerRescue : MonoBehaviour
         }
         else
         {
-            // UI yazıyı gizle
-            if (rescueMessageUI != null && rescueMessageUI.gameObject.activeSelf)
-                rescueMessageUI.gameObject.SetActive(false);
-
+            SetInRange(false);
             holdTimer = 0f;
         }
+    }
+
+    private void SetInRange(bool inRange)
+    {
+        IsInRange = inRange;
+
+        // Yeni HUD istemi varsa eski dunya ici yazi gosterilmez.
+        bool showLegacy = inRange && !GameHUD.Exists;
+        if (rescueMessageUI != null && rescueMessageUI.gameObject.activeSelf != showLegacy)
+            rescueMessageUI.gameObject.SetActive(showLegacy);
     }
 
     void EndGame()
     {
         gameEnded = true;
-
-        if (winPanel != null)
-            winPanel.SetActive(true); // Kazandınız panelini aç
+        SetInRange(false);
 
         Time.timeScale = 0f; // Oyunu durdur
+        GameSession.MarkEnded();
+
+        if (!GameEndScreen.ShowVictory() && winPanel != null)
+            winPanel.SetActive(true); // Kazandınız panelini aç
+
         Debug.Log("Oyun Bitti!");
     }
 }

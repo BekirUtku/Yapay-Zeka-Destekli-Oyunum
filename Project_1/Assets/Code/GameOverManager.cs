@@ -5,7 +5,6 @@ public class GameOverManager : MonoBehaviour
 {
     public void RestartGame()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneFader.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
