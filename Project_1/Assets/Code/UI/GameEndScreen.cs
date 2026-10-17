@@ -29,16 +29,31 @@ public class GameEndScreen : MonoBehaviour
 
     private bool shown;
 
-    /// <summary>Kaybetme ekranini acar. Ekran yoksa false doner.</summary>
+    /// <summary>Kaybetme ekranini acar. Ekran kurulamazsa false doner.</summary>
     public static bool ShowDefeat()
     {
-        return instance != null && instance.Show(false);
+        GameEndScreen screen = GetOrCreate();
+        return screen != null && screen.Show(false);
     }
 
-    /// <summary>Kazanma ekranini acar. Ekran yoksa false doner.</summary>
+    /// <summary>Kazanma ekranini acar. Ekran kurulamazsa false doner.</summary>
     public static bool ShowVictory()
     {
-        return instance != null && instance.Show(true);
+        GameEndScreen screen = GetOrCreate();
+        return screen != null && screen.Show(true);
+    }
+
+    /// <summary>
+    /// Normalde GameUIBootstrap ekrani sahne yuklenirken kurar. Herhangi bir
+    /// nedenle kurulmamissa oyun sonunda burada kurulur; eski panele dusulmez.
+    /// </summary>
+    private static GameEndScreen GetOrCreate()
+    {
+        if (instance == null)
+        {
+            new GameObject("[GameEnd]").AddComponent<GameEndScreen>();
+        }
+        return instance;
     }
 
     void Awake()

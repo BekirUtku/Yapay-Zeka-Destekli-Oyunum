@@ -394,7 +394,9 @@ public class GameHUD : MonoBehaviour
             alpha = 1f - Mathf.Clamp01((t - fadeIn - hold) / fadeOut);
         }
 
-        introGroup.alpha = alpha;
+        // Rehber ya da duraklatma menusu acikken banner arkada asili kalmasin.
+        bool paused = Mathf.Approximately(Time.timeScale, 0f);
+        introGroup.alpha = Mathf.MoveTowards(introGroup.alpha, paused ? 0f : alpha, dt * 8f);
         introCard.localScale = Vector3.one * Mathf.Lerp(0.94f, 1f, Mathf.Clamp01(t / fadeIn));
 
         if (t > fadeIn + hold + fadeOut)

@@ -291,7 +291,7 @@ public class GuideScreen : MonoBehaviour
         Image art = ItemCard(page, items, UITheme.Secondary);
         UITheme.Layout(art.gameObject, 440f);
         UITheme.VStack(art.gameObject, 28, 18f, TextAnchor.MiddleCenter, false);
-        RectTransform box = SpriteBox(art.transform, FindKnightSprite(), 330f, UITheme.Accent, "?");
+        RectTransform box = SpriteBox(art.transform, FindKnightSprite(), 330f, 330f, UITheme.Accent, "?");
         UITheme.Layout(box.gameObject, 330f, 330f);
         Image nameChip = UITheme.Chip(art.transform, "Name", out TextMeshProUGUI nameText, 22f);
         nameChip.color = UITheme.HudPanel;
@@ -299,7 +299,7 @@ public class GuideScreen : MonoBehaviour
 
         // Sag: hikaye ve adimlar.
         RectTransform info = UITheme.Rect("Info", page);
-        UITheme.Layout(info.gameObject).flexibleWidth = 1f;
+        UITheme.Flex(info.gameObject);
         UITheme.VStack(info.gameObject, 0, 14f, TextAnchor.UpperLeft);
         items.Add(info.gameObject.AddComponent<CanvasGroup>());
 
@@ -438,10 +438,11 @@ public class GuideScreen : MonoBehaviour
             Color tagColor = level < 0.34f ? UITheme.Success : level < 0.67f ? UITheme.Warning : UITheme.Danger;
 
             Image cardImage = ItemCard(page, items, UITheme.Secondary);
+            UITheme.Flex(cardImage.gameObject);
             UITheme.VStack(cardImage.gameObject, 28, 12f, TextAnchor.UpperLeft);
 
             UITheme.Overline("Order", cardImage.transform, $"{i + 1}. KARŞILAŞMA", UITheme.TextSecondary).fontSize = 16f;
-            SpriteBox(cardImage.transform, SpriteOf(e), 150f, tagColor, "?");
+            SpriteBox(cardImage.transform, SpriteOf(e), 150f, 300f, tagColor, "?");
 
             RectTransform nameRow = UITheme.Rect("NameRow", cardImage.transform);
             UITheme.HStack(nameRow.gameObject, 12f, TextAnchor.MiddleLeft, false);
@@ -489,7 +490,9 @@ public class GuideScreen : MonoBehaviour
 
     // ---------------------------------------------------------- Parcalar
 
-    private RectTransform SpriteBox(Transform parent, Sprite sprite, float height, Color glowColor, string fallback)
+    /// <param name="maxWidth">Gorselin gorunur kisminin cikabilecegi en buyuk genislik.</param>
+    private RectTransform SpriteBox(Transform parent, Sprite sprite, float height, float maxWidth, Color glowColor,
+        string fallback)
     {
         RectTransform box = UITheme.Rect("Art", parent);
         UITheme.Layout(box.gameObject, -1f, height);
@@ -503,8 +506,7 @@ public class GuideScreen : MonoBehaviour
         {
             Image art = UITheme.Panel("Sprite", box, Color.white, 0);
             art.sprite = sprite;
-            art.preserveAspect = true;
-            UITheme.Stretch(art.rectTransform, 6f);
+            FitVisiblePart(art.rectTransform, sprite, height - 12f, maxWidth);
         }
         else
         {
@@ -518,9 +520,10 @@ public class GuideScreen : MonoBehaviour
         string subtitle, string effect, Color effectColor, string description, string footer)
     {
         Image cardImage = ItemCard(parent, items, UITheme.Secondary);
+        UITheme.Flex(cardImage.gameObject);
         UITheme.VStack(cardImage.gameObject, 28, 10f, TextAnchor.UpperCenter);
 
-        SpriteBox(cardImage.transform, sprite, 140f, glow, "!");
+        SpriteBox(cardImage.transform, sprite, 140f, 280f, glow, "!");
         UITheme.Heading("Title", cardImage.transform, title, 32f, UITheme.TextPrimary, TextAlignmentOptions.Center);
         UITheme.Text("Subtitle", cardImage.transform, subtitle, 19f, UITheme.TextSecondary, false, TextAlignmentOptions.Center);
 
@@ -564,7 +567,7 @@ public class GuideScreen : MonoBehaviour
         }
 
         RectTransform text = UITheme.Rect("Text", cardImage.transform);
-        UITheme.Layout(text.gameObject).flexibleWidth = 1f;
+        UITheme.Flex(text.gameObject);
         UITheme.VStack(text.gameObject, 0, 4f, TextAnchor.MiddleLeft);
         UITheme.Text("Title", text, title, 26f, UITheme.TextPrimary, UITheme.Weight.SemiBold);
         UITheme.Text("Description", text, description, 19f, UITheme.TextSecondary);
@@ -582,7 +585,7 @@ public class GuideScreen : MonoBehaviour
         UITheme.Stretch(n.rectTransform);
 
         RectTransform text = UITheme.Rect("Text", row);
-        UITheme.Layout(text.gameObject).flexibleWidth = 1f;
+        UITheme.Flex(text.gameObject);
         UITheme.VStack(text.gameObject, 0, 2f, TextAnchor.UpperLeft);
         UITheme.Text("Title", text, title, 24f, UITheme.TextPrimary, UITheme.Weight.SemiBold);
         UITheme.Text("Description", text, description, 19f, UITheme.TextSecondary);
@@ -627,7 +630,35 @@ public class GuideScreen : MonoBehaviour
         HorizontalLayoutGroup h = UITheme.HStack(bar.gameObject, 16f, TextAnchor.MiddleLeft, false);
         h.padding = new RectOffset(26, 26, 0, 0);
         UITheme.Text("Label", bar.transform, "İPUCU", 18f, UITheme.Accent, UITheme.Weight.ExtraBold).characterSpacing = 6f;
-        UITheme.Text("Text", bar.transform, tip, 21f, UITheme.TextPrimary);
+        UITheme.Flex(UITheme.Text("Text", bar.transform, tip, 21f, UITheme.TextPrimary).gameObject);
+    }
+
+    /// <summary>
+    /// Sprite sayfalarindaki kareler genelde bol saydam bosluk icerir; karakter
+    /// kutuda kucuk kalir. Tight mesh'in sinirlarindan gorunur kismi bulup onu
+    /// kutuya sigacak kadar buyutur ve ortalar. FullRect sprite'ta tum kare kullanilir.
+    /// </summary>
+    private static void FitVisiblePart(RectTransform rt, Sprite sprite, float maxHeight, float maxWidth)
+    {
+        float ppu = sprite.pixelsPerUnit;
+        Vector2 full = sprite.rect.size;
+        Bounds bounds = sprite.bounds;
+
+        Vector2 visible = new Vector2(bounds.size.x * ppu, bounds.size.y * ppu);
+        Vector2 visibleCenter = new Vector2(bounds.center.x * ppu, bounds.center.y * ppu) + sprite.pivot;
+        if (visible.x < 1f || visible.y < 1f)
+        {
+            visible = full;
+            visibleCenter = full * 0.5f;
+        }
+
+        float scale = Mathf.Min(maxHeight / visible.y, maxWidth / visible.x);
+
+        rt.anchorMin = new Vector2(0.5f, 0.5f);
+        rt.anchorMax = new Vector2(0.5f, 0.5f);
+        rt.pivot = new Vector2(0.5f, 0.5f);
+        rt.sizeDelta = full * scale;
+        rt.anchoredPosition = (full * 0.5f - visibleCenter) * scale;
     }
 
     private static string CountLine(int count)

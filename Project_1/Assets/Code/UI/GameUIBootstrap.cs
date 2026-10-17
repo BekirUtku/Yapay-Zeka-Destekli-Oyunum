@@ -17,17 +17,35 @@ public static class GameUIBootstrap
         SceneManager.sceneLoaded += HandleSceneLoaded;
     }
 
+    /// <summary>
+    /// Editorde Play'e basinca acilan ilk sahne icin sceneLoaded her zaman gelmiyor;
+    /// ilk sahne ayrica burada kurulur. Iki yol da calisirsa Setup ikinci kez kurmaz.
+    /// </summary>
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+    private static void SetupInitialScene()
+    {
+        Setup();
+    }
+
     private static void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (mode != LoadSceneMode.Single)
+        if (mode == LoadSceneMode.Single)
         {
-            return;
+            Setup();
         }
+    }
 
+    private static void Setup()
+    {
         EnsureEventSystem();
 
         if (Object.FindFirstObjectByType<PlayerController>() != null)
         {
+            if (Object.FindFirstObjectByType<GameHUD>() != null)
+            {
+                return;
+            }
+
             GameSession.TotalEnemies = Object.FindObjectsByType<EnemyHealthBase>(FindObjectsSortMode.None).Length;
 
             GameObject root = new GameObject("[GameUI]");
@@ -37,6 +55,11 @@ public static class GameUIBootstrap
         }
         else if (Object.FindFirstObjectByType<MenuScript>() != null)
         {
+            if (Object.FindFirstObjectByType<MainMenuUI>() != null)
+            {
+                return;
+            }
+
             new GameObject("[MainMenuUI]").AddComponent<MainMenuUI>();
         }
     }

@@ -211,7 +211,7 @@ public class MainMenuUI : MonoBehaviour
             UITheme.KeyBadge(keyArea, key);
         }
 
-        UITheme.Text("Text", row, description, 24f, UITheme.TextPrimary);
+        UITheme.Flex(UITheme.Text("Text", row, description, 24f, UITheme.TextPrimary).gameObject);
     }
 
     // ---------------------------------------------------------------- Davranis

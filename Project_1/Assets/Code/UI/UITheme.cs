@@ -333,6 +333,8 @@ public static class UITheme
         // Agirlik dosyadan geliyor; FontStyles.Bold sahte kalinlastirma yapardi.
         label.fontStyle = FontStyles.Normal;
         label.alignment = alignment;
+        label.textWrappingMode = TextWrappingModes.Normal;
+        label.overflowMode = TextOverflowModes.Overflow;
         label.richText = true;
         label.raycastTarget = false;
         return label;
@@ -399,10 +401,33 @@ public static class UITheme
         }
         le.preferredWidth = preferredWidth;
         le.preferredHeight = preferredHeight;
+        // Sabit olculer yan yana dizilimde sikistirilmasin.
+        if (preferredWidth > 0f)
+        {
+            le.minWidth = preferredWidth;
+        }
         if (preferredHeight > 0f)
         {
             le.minHeight = preferredHeight;
         }
+        return le;
+    }
+
+    /// <summary>
+    /// Yan yana dizilimde (HStack) kalan genisligi paylasir. Icindeki metnin tek
+    /// satirlik uzunlugunu istemez; boylece uzun metin tasmak yerine satira bolunur
+    /// ve ayni agirliktaki kardesleriyle esit genislik alir.
+    /// </summary>
+    public static LayoutElement Flex(GameObject go, float weight = 1f)
+    {
+        LayoutElement le = go.GetComponent<LayoutElement>();
+        if (le == null)
+        {
+            le = go.AddComponent<LayoutElement>();
+        }
+        le.minWidth = 0f;
+        le.preferredWidth = 0f;
+        le.flexibleWidth = weight;
         return le;
     }
 
