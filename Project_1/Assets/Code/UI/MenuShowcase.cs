@@ -361,15 +361,9 @@ public class MenuShowcase : MonoBehaviour
     /// </summary>
     private static Vector2 AnchorFeet(RectTransform rt, Sprite first, float scale, Vector2 ground, bool flip)
     {
-        float ppu = first.pixelsPerUnit;
-        Bounds b = first.bounds;
-        float bottomPx = b.min.y * ppu + first.pivot.y;
-        float centerPx = b.center.x * ppu + first.pivot.x;
-        if (b.size.y * ppu < 1f)
-        {
-            bottomPx = 0f;
-            centerPx = first.rect.width * 0.5f;
-        }
+        Rect visible = UITheme.VisibleRect(first);
+        float bottomPx = visible.yMin;
+        float centerPx = visible.center.x;
 
         float offsetX = (first.rect.width * 0.5f - centerPx) * scale * (flip ? -1f : 1f);
         Vector2 position = ground + new Vector2(offsetX, -bottomPx * scale);

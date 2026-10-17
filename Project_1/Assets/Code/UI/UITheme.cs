@@ -212,6 +212,35 @@ public static class UITheme
         return glowSprite;
     }
 
+    /// <summary>
+    /// Sprite'in dolu (saydam olmayan) kisminin, karenin sol altina gore piksel
+    /// cinsinden dikdortgeni. Sprite.bounds saydam bosluk dahil tum kareyi verdigi
+    /// icin Tight mesh'in kose noktalari kullanilir. FullRect mesh'te tum kare doner.
+    /// </summary>
+    public static Rect VisibleRect(Sprite sprite)
+    {
+        Rect full = new Rect(0f, 0f, sprite.rect.width, sprite.rect.height);
+        Vector2[] vertices = sprite.vertices;
+        if (vertices == null || vertices.Length == 0)
+        {
+            return full;
+        }
+
+        float ppu = sprite.pixelsPerUnit;
+        Vector2 pivot = sprite.pivot;
+        Vector2 min = new Vector2(float.MaxValue, float.MaxValue);
+        Vector2 max = new Vector2(float.MinValue, float.MinValue);
+        foreach (Vector2 v in vertices)
+        {
+            Vector2 px = v * ppu + pivot;
+            min = Vector2.Min(min, px);
+            max = Vector2.Max(max, px);
+        }
+
+        Rect visible = UnityEngine.Rect.MinMaxRect(min.x, min.y, max.x, max.y);
+        return visible.width >= 1f && visible.height >= 1f ? visible : full;
+    }
+
     private static Sprite ringSprite;
 
     /// <summary>Ince, kenarlari yumusak beyaz halka (ana menu vitrini icin).</summary>

@@ -640,17 +640,10 @@ public class GuideScreen : MonoBehaviour
     /// </summary>
     private static void FitVisiblePart(RectTransform rt, Sprite sprite, float maxHeight, float maxWidth)
     {
-        float ppu = sprite.pixelsPerUnit;
         Vector2 full = sprite.rect.size;
-        Bounds bounds = sprite.bounds;
-
-        Vector2 visible = new Vector2(bounds.size.x * ppu, bounds.size.y * ppu);
-        Vector2 visibleCenter = new Vector2(bounds.center.x * ppu, bounds.center.y * ppu) + sprite.pivot;
-        if (visible.x < 1f || visible.y < 1f)
-        {
-            visible = full;
-            visibleCenter = full * 0.5f;
-        }
+        Rect visibleRect = UITheme.VisibleRect(sprite);
+        Vector2 visible = visibleRect.size;
+        Vector2 visibleCenter = visibleRect.center;
 
         float scale = Mathf.Min(maxHeight / visible.y, maxWidth / visible.x);
 
