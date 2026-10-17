@@ -4107,7 +4107,7 @@ Transform:
   m_GameObject: {fileID: 302811436}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.717405, y: -6.1890535, z: -9.56}
+  m_LocalPosition: {x: -22.716501, y: -6.1890535, z: -9.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6054,7 +6054,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.717405, y: -6.1890535, z: -9.56}
+  m_LocalPosition: {x: -22.716501, y: -6.1890535, z: -9.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15583,6 +15583,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoPanel: {fileID: 144717445}
+  infoText: {fileID: 0}
+  toggleKey: 105
+  closeKey: 27
+  pauseWhileOpen: 1
+  padding: 64
+  fadeDuration: 0.18
+  startScale: 0.92
 --- !u!4 &1401124641
 Transform:
   m_ObjectHideFlags: 0
@@ -18398,6 +18405,9 @@ MonoBehaviour:
     m_Bits: 128
   attachRange: 0.5
   attachDamage: 40
+  popupColor: {r: 1, g: 0.85, b: 0.3, a: 1}
+  hitStopDuration: 0.06
+  shakeForce: 0.35
 --- !u!114 &1717208764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18416,6 +18426,7 @@ MonoBehaviour:
   enemyattack: 0
   enemytimer: 0
   anim: {fileID: 0}
+  hitShakeForce: 0.5
 --- !u!114 &1717208765
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,21 +1,31 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerCombat : MonoBehaviour
 {
-    public Transform atachPoint;
+    // Eski adlar "atach/attach" yazim hatasi iceriyordu; sahnedeki degerler korunur.
+    [FormerlySerializedAs("atachPoint")]
+    public Transform attackPoint;
     public LayerMask enemyLayers;
 
-    public float attachRange = 0.5f;
-    public int attachDamage = 40;
+    [FormerlySerializedAs("attachRange")]
+    public float attackRange = 0.5f;
+    [FormerlySerializedAs("attachDamage")]
+    public int attackDamage = 40;
 
+
+    [Header("Vurus hissi")]
+    public Color popupColor = new Color(1f, 0.85f, 0.3f);
+    public float hitStopDuration = 0.06f;
+    public float shakeForce = 0.35f;
 
     private readonly List<Collider2D> hitBuffer = new List<Collider2D>();
     private ContactFilter2D hitFilter;
 
     public void DamageEnemy()
     {
-        if (atachPoint == null)
+        if (attackPoint == null)
         {
             return;
         }
@@ -24,38 +34,40 @@ public class PlayerCombat : MonoBehaviour
         hitFilter.layerMask = enemyLayers;
         hitFilter.useTriggers = Physics2D.queriesHitTriggers;
 
-        Physics2D.OverlapCircle(atachPoint.position, attachRange, hitFilter, hitBuffer);
+        Physics2D.OverlapCircle(attackPoint.position, attackRange, hitFilter, hitBuffer);
+
+        bool hitAnything = false;
 
         foreach (Collider2D enemy in hitBuffer)
         {
-            Fight fightScript = enemy.GetComponent<Fight>();
-            if (fightScript != null)
+            // Enemy, Fight ve Warrior hepsi EnemyHealthBase'ten turer.
+            EnemyHealthBase target = enemy.GetComponent<EnemyHealthBase>();
+            if (target == null || target.IsDead)
             {
-                fightScript.TakeDamage(attachDamage);
+                continue;
             }
 
-            Enemy enemyScript = enemy.GetComponent<Enemy>();
-            if (enemyScript != null)
-            {
-                enemyScript.TakeDamage(attachDamage);
-            }
+            target.TakeDamage(attackDamage);
+            hitAnything = true;
+            DamagePopup.Spawn(enemy.bounds.center, attackDamage, popupColor);
+        }
 
-            Warrior warriorScript = enemy.GetComponent<Warrior>();
-            if (warriorScript != null)
-            {
-                warriorScript.TakeDamage(attachDamage);
-            }
+        // Isabet varsa darbeyi hissettir.
+        if (hitAnything)
+        {
+            HitStop.Play(hitStopDuration);
+            ScreenShake.Shake(shakeForce);
         }
     }
 
     private void OnDrawGizmosSelected()
     {
 
-        if (atachPoint ==null)
+        if (attackPoint ==null)
         {
             return;
         }
-        Gizmos.DrawWireSphere(atachPoint.position, attachRange);
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
 }

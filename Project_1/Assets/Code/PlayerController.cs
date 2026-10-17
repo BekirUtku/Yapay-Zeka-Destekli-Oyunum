@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     // Game Over bir kez tetiklensin.
     private bool gameOverTriggered = false;
 
+    // Olum animasyonu sirasinda girdi kapali.
+    private bool controlsLocked = false;
+
     void Start()
     {
         Time.timeScale = 1f;
@@ -42,14 +45,25 @@ public class PlayerController : MonoBehaviour
 
         playerCombat = GetComponent<PlayerCombat>();
 
+        // Oyun basinda ilk saldiri icin 1 saniye beklenmesin.
+        characterattack = true;
         charactertimer = 1f;
+    }
+
+    /// <summary>Oyuncuyu yerinde durdurur ve tum girdiyi kapatir (olum).</summary>
+    public void LockControls()
+    {
+        controlsLocked = true;
+        horizontal = 0f;
+        moveInput = 0f;
+        playerRealAnimator.SetFloat("speed", 0f);
     }
 
     private void Update()
     {
         // Oyun duraklatildiginda (bilgi paneli, Game Over, kazanma ekrani)
         // girdi islenmesin ve fizik sorgulari bosa calismasin.
-        if (Mathf.Approximately(Time.timeScale, 0f))
+        if (Mathf.Approximately(Time.timeScale, 0f) || controlsLocked)
         {
             return;
         }

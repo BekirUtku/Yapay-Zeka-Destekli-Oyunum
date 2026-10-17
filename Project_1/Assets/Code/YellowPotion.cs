@@ -11,7 +11,7 @@ public class YellowPotion : MonoBehaviour
             PlayerCombat combat = other.GetComponent<PlayerCombat>();
             if (combat != null)
             {
-                combat.attachDamage += extraDamage;
+                combat.attackDamage += extraDamage;
             }
 
             Destroy(gameObject); // iksir yok olsun

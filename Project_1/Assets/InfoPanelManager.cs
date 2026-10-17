@@ -139,7 +139,9 @@ public class InfoPanelManager : MonoBehaviour
 
         if (pauseWhileOpen)
         {
-            Time.timeScale = previousTimeScale;
+            // Her zaman 1'e don. previousTimeScale, panel bir hitstop aninda
+            // acildiysa yavaslatilmis degeri tutabilir.
+            Time.timeScale = 1f;
         }
 
         StartAnimation(Animate(canvasGroup.alpha, 0f, 1f, startScale, true));

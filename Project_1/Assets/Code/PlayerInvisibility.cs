@@ -10,14 +10,23 @@ public class PlayerInvisibility : MonoBehaviour
     private int invisibilityUses = 0; // Kullanım sayacı
     public int maxUses = 2; // En fazla kaç kere kullanılabilir
 
+    private CharacterHealth health;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalLayer = gameObject.layer;
+        health = GetComponent<CharacterHealth>();
     }
 
     void Update()
     {
+        // Duraklatilmisken (bilgi paneli vb.) veya olurken hak harcanmasin.
+        if (Mathf.Approximately(Time.timeScale, 0f) || (health != null && health.IsDead))
+        {
+            return;
+        }
+
         // H tuşuna basıldığında ve zaten görünmez değilken ve hak kaldıysa
         if (Input.GetKeyDown(KeyCode.H) && !isInvisible && invisibilityUses < maxUses)
         {

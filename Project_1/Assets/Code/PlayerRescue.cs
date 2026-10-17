@@ -12,8 +12,12 @@ public class PlayerRescue : MonoBehaviour
     private float holdTimer = 0f;
     private bool gameEnded = false;
 
+    private CharacterHealth health;
+
     void Start()
     {
+        health = GetComponent<CharacterHealth>();
+
         if (rescueMessageUI != null)
             rescueMessageUI.gameObject.SetActive(false); // Yazı başta gizli
 
@@ -24,6 +28,14 @@ public class PlayerRescue : MonoBehaviour
     void Update()
     {
         if (gameEnded) return;
+
+        // Olum animasyonunun 1.5 saniyesinde kurtarip kazanmak mumkun olmasin.
+        if (health != null && health.IsDead)
+        {
+            if (rescueMessageUI != null && rescueMessageUI.gameObject.activeSelf)
+                rescueMessageUI.gameObject.SetActive(false);
+            return;
+        }
 
         if (rescueTarget == null)
         {
