@@ -70,9 +70,8 @@ public class GameEndScreen : MonoBehaviour
         UITheme.VStack(cardImage.gameObject, 44, 12f, TextAnchor.UpperCenter);
         UITheme.FitHeight(cardImage.gameObject);
 
-        overline = UITheme.Text("Overline", card, "", 20f, UITheme.Accent, true, TextAlignmentOptions.Center);
-        overline.characterSpacing = 8f;
-        title = UITheme.Text("Title", card, "", 72f, UITheme.TextPrimary, true, TextAlignmentOptions.Center);
+        overline = UITheme.Overline("Overline", card, "", UITheme.Accent, TextAlignmentOptions.Center);
+        title = UITheme.Heading("Title", card, "", 80f, UITheme.TextPrimary, TextAlignmentOptions.Center);
         subtitle = UITheme.Text("Subtitle", card, "", 24f, UITheme.TextSecondary, false, TextAlignmentOptions.Center);
 
         UITheme.Spacer(card, 12f);
@@ -109,7 +108,7 @@ public class GameEndScreen : MonoBehaviour
         RectTransform column = UITheme.Rect(label, parent);
         UITheme.VStack(column.gameObject, 0, 4f, TextAnchor.MiddleCenter);
 
-        TextMeshProUGUI value = UITheme.Text("Value", column, "—", 36f, UITheme.TextPrimary, true, TextAlignmentOptions.Center);
+        TextMeshProUGUI value = UITheme.Text("Value", column, "—", 38f, UITheme.TextPrimary, UITheme.Weight.ExtraBold, TextAlignmentOptions.Center);
         labelText = UITheme.Text("Label", column, label, 18f, UITheme.TextSecondary, false, TextAlignmentOptions.Center);
         return value;
     }

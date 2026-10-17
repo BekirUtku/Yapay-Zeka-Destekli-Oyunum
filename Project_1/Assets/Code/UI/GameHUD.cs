@@ -40,6 +40,10 @@ public class GameHUD : MonoBehaviour
 
     private RectTransform toastRoot;
 
+    private CanvasGroup introGroup;
+    private RectTransform introCard;
+    private float introTime;
+
     private int lastHealth = int.MinValue;
     private float shownFraction = 1f;
     private float ghostFraction = 1f;
@@ -119,6 +123,8 @@ public class GameHUD : MonoBehaviour
         BuildHealthCard(canvas.transform);
         BuildTimer(canvas.transform);
         BuildRescuePrompt(canvas.transform);
+        BuildKeyHints(canvas.transform);
+        BuildIntroBanner(canvas.transform);
 
         toastRoot = UITheme.Rect("Toasts", canvas.transform);
         UITheme.Place(toastRoot, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0f, -36f), new Vector2(800f, 400f));
@@ -176,7 +182,7 @@ public class GameHUD : MonoBehaviour
     {
         Image chip = UITheme.Panel("Timer", parent, UITheme.HudPanel, UITheme.RadiusMedium);
         UITheme.Place(chip.rectTransform, new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-32f, -32f), new Vector2(150f, 56f));
-        timerText = UITheme.Text("Text", chip.transform, "00:00", 28f, UITheme.TextPrimary, true, TextAlignmentOptions.Center);
+        timerText = UITheme.Text("Text", chip.transform, "00:00", 30f, UITheme.TextPrimary, UITheme.Weight.ExtraBold, TextAlignmentOptions.Center);
         UITheme.Stretch(timerText.rectTransform);
     }
 
@@ -200,6 +206,42 @@ public class GameHUD : MonoBehaviour
         UITheme.SetFill(rescueFill, 0f);
     }
 
+    private void BuildKeyHints(Transform parent)
+    {
+        Image panel = UITheme.Panel("KeyHints", parent, UITheme.HudPanel, UITheme.RadiusMedium);
+        UITheme.Place(panel.rectTransform, Vector2.zero, Vector2.zero, new Vector2(32f, 28f), Vector2.zero);
+        HorizontalLayoutGroup h = UITheme.HStack(panel.gameObject, 10f, TextAnchor.MiddleLeft, false);
+        h.padding = new RectOffset(10, 16, 8, 8);
+        ContentSizeFitter fitter = panel.gameObject.AddComponent<ContentSizeFitter>();
+        fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+        fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+        UITheme.KeyBadge(panel.transform, "I", 30f);
+        UITheme.Text("Guide", panel.transform, "Rehber", 18f, UITheme.TextSecondary);
+        UITheme.Layout(UITheme.Rect("Gap", panel.transform).gameObject, 8f);
+        UITheme.KeyBadge(panel.transform, "ESC", 30f);
+        UITheme.Text("Menu", panel.transform, "Menü", 18f, UITheme.TextSecondary);
+    }
+
+    /// <summary>Oyun basinda gorevi tanitan, birkac saniye sonra kaybolan baslik.</summary>
+    private void BuildIntroBanner(Transform parent)
+    {
+        Image card = UITheme.Panel("Intro", parent, UITheme.HudPanel, UITheme.RadiusLarge + 4);
+        introCard = card.rectTransform;
+        UITheme.Place(introCard, new Vector2(0.5f, 0.68f), new Vector2(0.5f, 0.5f), Vector2.zero, new Vector2(780f, 0f));
+        UITheme.VStack(card.gameObject, 34, 6f, TextAnchor.UpperCenter);
+        UITheme.FitHeight(card.gameObject);
+
+        UITheme.Overline("Overline", card.transform, "GÖREV", UITheme.Accent, TextAlignmentOptions.Center);
+        UITheme.Heading("Title", card.transform, "Kayıp şövalyeyi kurtar", 60f, UITheme.TextPrimary, TextAlignmentOptions.Center);
+        UITheme.Text("Hint", card.transform,
+            $"Sağa doğru ilerle   ·   <color={UITheme.AccentHex}>I</color> ile rehberi aç",
+            22f, UITheme.TextSecondary, false, TextAlignmentOptions.Center);
+
+        introGroup = card.gameObject.AddComponent<CanvasGroup>();
+        introGroup.alpha = 0f;
+    }
+
     // ---------------------------------------------------------------- Guncelleme
 
     void Update()
@@ -210,6 +252,7 @@ public class GameHUD : MonoBehaviour
         UpdateChips(dt);
         UpdateRescue(dt);
         UpdateTimer();
+        UpdateIntro(dt);
 
         // Oyun bitince HUD sonup sonuc ekranina yer acar.
         float targetAlpha = GameSession.Ended ? 0f : 1f;
@@ -312,6 +355,53 @@ public class GameHUD : MonoBehaviour
         bool show = rescue != null && rescue.IsInRange && !GameSession.Ended;
         rescueGroup.alpha = Mathf.MoveTowards(rescueGroup.alpha, show ? 1f : 0f, dt * 6f);
         UITheme.SetFill(rescueFill, rescue != null ? rescue.HoldProgress : 0f);
+    }
+
+    private void UpdateIntro(float dt)
+    {
+        if (introGroup == null)
+        {
+            return;
+        }
+
+        // Rehber/duraklatma acikken zaman ilerlemez; banner kaldigi yerden devam eder.
+        if (!Mathf.Approximately(Time.timeScale, 0f))
+        {
+            introTime += dt;
+        }
+
+        const float delay = 0.5f;
+        const float fadeIn = 0.45f;
+        const float hold = 3.2f;
+        const float fadeOut = 0.6f;
+
+        float t = introTime - delay;
+        float alpha;
+        if (t <= 0f)
+        {
+            alpha = 0f;
+        }
+        else if (t < fadeIn)
+        {
+            alpha = UIAnim.EaseOutCubic(t / fadeIn);
+        }
+        else if (t < fadeIn + hold)
+        {
+            alpha = 1f;
+        }
+        else
+        {
+            alpha = 1f - Mathf.Clamp01((t - fadeIn - hold) / fadeOut);
+        }
+
+        introGroup.alpha = alpha;
+        introCard.localScale = Vector3.one * Mathf.Lerp(0.94f, 1f, Mathf.Clamp01(t / fadeIn));
+
+        if (t > fadeIn + hold + fadeOut)
+        {
+            Destroy(introCard.gameObject);
+            introGroup = null;
+        }
     }
 
     private void UpdateTimer()

@@ -54,7 +54,7 @@ public class PauseMenu : MonoBehaviour
         UITheme.VStack(cardImage.gameObject, 36, 12f, TextAnchor.UpperCenter);
         UITheme.FitHeight(cardImage.gameObject);
 
-        UITheme.Text("Title", card, "Duraklatıldı", 44f, UITheme.TextPrimary, true, TextAlignmentOptions.Center);
+        UITheme.Heading("Title", card, "Duraklatıldı", 48f, UITheme.TextPrimary, TextAlignmentOptions.Center);
         timeText = UITheme.Text("Time", card, "", 22f, UITheme.TextSecondary, false, TextAlignmentOptions.Center);
         UITheme.Spacer(card, 12f);
 

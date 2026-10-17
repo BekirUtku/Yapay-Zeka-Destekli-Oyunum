@@ -119,11 +119,11 @@ public class MainMenuUI : MonoBehaviour
         UITheme.VStack(column.gameObject, 0, 14f, TextAnchor.MiddleLeft, false);
         UITheme.FitHeight(column.gameObject);
 
-        TextMeshProUGUI tagline = UITheme.Text("Tagline", column, Tagline, 22f, UITheme.Accent, true);
-        tagline.characterSpacing = 10f;
+        TextMeshProUGUI tagline = UITheme.Overline("Tagline", column, Tagline, UITheme.Accent);
+        tagline.fontSize = 22f;
         UITheme.Layout(tagline.gameObject, 960f);
 
-        TextMeshProUGUI title = UITheme.Text("Title", column, GameTitle, 112f, UITheme.TextPrimary, true);
+        TextMeshProUGUI title = UITheme.Heading("Title", column, GameTitle, 120f, UITheme.TextPrimary);
         title.characterSpacing = -2f;
         UITheme.Layout(title.gameObject, 960f);
 
@@ -176,7 +176,7 @@ public class MainMenuUI : MonoBehaviour
         UITheme.VStack(cardImage.gameObject, 40, 14f, TextAnchor.UpperLeft);
         UITheme.FitHeight(cardImage.gameObject);
 
-        UITheme.Text("Title", helpCard, "Nasıl oynanır", 44f, UITheme.TextPrimary, true);
+        UITheme.Heading("Title", helpCard, "Nasıl oynanır", 48f, UITheme.TextPrimary);
         UITheme.Text("Subtitle", helpCard, "Şövalyeye ulaşıp F'yi basılı tutarak onu kurtar.", 22f, UITheme.TextSecondary);
         UITheme.Spacer(helpCard, 6f);
 

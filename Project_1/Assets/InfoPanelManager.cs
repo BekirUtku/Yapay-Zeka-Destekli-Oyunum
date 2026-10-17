@@ -1,43 +1,32 @@
 using System.Collections;
-using System.Text;
-using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// Oyun ici bilgi/rehber ekrani. Icerik calisma zamaninda TMP zengin metin olarak
-/// uretilir, panel acilirken oyun duraklatilir, fade + scale ile animasyonlanir.
-/// Sahnede ek obje gerektirmez; CanvasGroup yoksa otomatik eklenir.
+/// I tusuyla acilan oyun rehberini yonetir: acma/kapama, oyunu duraklatma ve
+/// duraklatma menusuyle is birligi. Gorunum GuideScreen'de, kodla kurulur.
+/// Ilk oynayista rehber Gorev sekmesiyle kendiliginden acilir.
 /// </summary>
 public class InfoPanelManager : MonoBehaviour
 {
-    [Header("Referanslar")]
-    [Tooltip("Acilip kapanacak panel objesi.")]
-    public GameObject infoPanel;
+    private const string GuideSeenKey = "GuideSeen";
 
-    [Tooltip("Bos birakilirsa infoPanel altindaki ilk TextMeshProUGUI kullanilir.")]
-    public TextMeshProUGUI infoText;
+    [Header("Referanslar")]
+    [Tooltip("Sahnedeki eski metin paneli. Yeni rehber kullanildigi icin baslangicta gizlenir.")]
+    public GameObject infoPanel;
 
     [Header("Tuslar")]
     public KeyCode toggleKey = KeyCode.I;
     public KeyCode closeKey = KeyCode.Escape;
 
     [Header("Davranis")]
-    [Tooltip("Panel acikken Time.timeScale = 0 yapilir.")]
+    [Tooltip("Rehber acikken Time.timeScale = 0 yapilir.")]
     public bool pauseWhileOpen = true;
 
-    [Header("Yerlesim")]
-    [Tooltip("Metnin panel kenarlarina uzakligi (piksel).")]
-    public float padding = 64f;
+    [Tooltip("Oyun ilk kez oynandiginda rehberi Gorev sekmesiyle otomatik ac.")]
+    public bool openOnFirstPlay = true;
 
-    [Header("Animasyon")]
-    [Range(0f, 1f)] public float fadeDuration = 0.18f;
-    [Range(0.5f, 1f)] public float startScale = 0.92f;
-
-    private CanvasGroup canvasGroup;
-    private RectTransform panelRect;
-    private Coroutine activeAnimation;
+    private GuideScreen guide;
     private bool isOpen;
-    private float previousTimeScale = 1f;
 
     // Duraklatma menusunden acildiysa oyun kapanista da durur, menuye donulur.
     private bool openedFromPause;
@@ -46,62 +35,35 @@ public class InfoPanelManager : MonoBehaviour
     public bool IsOpen => isOpen;
 
     /// <summary>
-    /// Panelin en son kapandigi kare. ESC hem paneli kapatip hem de ayni karede
+    /// Rehberin en son kapandigi kare. ESC hem rehberi kapatip hem de ayni karede
     /// duraklatma menusunu acmasin diye PauseMenu buna bakar.
     /// </summary>
     public int LastClosedFrame { get; private set; } = -1;
 
-    // ---- Renk paleti (UITheme ile ayni) ----
-    private const string ColTitle = "#F2F5F8";
-    private const string ColSection = "#4FD1C5";
-    private const string ColKey = "#4FD1C5";
-    private const string ColBody = "#E6EBF0";
-    private const string ColMuted = "#8A96A3";
-    private const string ColRed = "#FF6B6B";
-    private const string ColGreen = "#7BE38B";
-    private const string ColYellow = "#FFD84A";
-
     void Start()
     {
-        if (infoPanel == null)
+        if (infoPanel != null)
         {
-            Debug.LogWarning($"{name}: InfoPanelManager.infoPanel atanmamis, script devre disi birakildi.", this);
-            enabled = false;
-            return;
+            infoPanel.SetActive(false);
         }
 
-        if (infoText == null)
+        guide = gameObject.AddComponent<GuideScreen>();
+        guide.CloseRequested = Close;
+
+        if (openOnFirstPlay && PlayerPrefs.GetInt(GuideSeenKey, 0) == 0)
         {
-            // Panel kapali olabilecegi icin includeInactive = true.
-            infoText = infoPanel.GetComponentInChildren<TextMeshProUGUI>(true);
+            StartCoroutine(OpenOnFirstPlay());
         }
+    }
 
-        panelRect = infoPanel.GetComponent<RectTransform>();
-
-        canvasGroup = infoPanel.GetComponent<CanvasGroup>();
-        if (canvasGroup == null)
+    private IEnumerator OpenOnFirstPlay()
+    {
+        // Sahne ve kararma gecisi otursun, oyuncu dunyayi bir an gorsun.
+        yield return new WaitForSecondsRealtime(0.8f);
+        if (!isOpen)
         {
-            canvasGroup = infoPanel.AddComponent<CanvasGroup>();
+            TryOpen(0);
         }
-
-        ApplyTheme();
-
-        if (infoText != null)
-        {
-            ApplyLayout();
-            infoText.richText = true;
-            infoText.text = BuildContent();
-        }
-        else
-        {
-            Debug.LogWarning($"{name}: infoPanel altinda TextMeshProUGUI bulunamadi, metin yazilamadi.", this);
-        }
-
-        // Baslangicta kapali.
-        isOpen = false;
-        canvasGroup.alpha = 0f;
-        canvasGroup.blocksRaycasts = false;
-        infoPanel.SetActive(false);
     }
 
     void Update()
@@ -114,7 +76,7 @@ public class InfoPanelManager : MonoBehaviour
             }
             else
             {
-                TryOpen();
+                TryOpen(-1);
             }
         }
         else if (isOpen && Input.GetKeyDown(closeKey))
@@ -123,36 +85,34 @@ public class InfoPanelManager : MonoBehaviour
         }
     }
 
-    private void TryOpen()
+    /// <param name="page">Acilacak sekme; -1 en son bakilan sekme.</param>
+    private void TryOpen(int page)
     {
-        // Oyun baska bir sey tarafindan zaten durdurulmussa (Game Over / Kazandiniz)
-        // paneli acma; aksi halde kapanista timeScale'i yanlis geri yuklerdik.
-        if (Mathf.Approximately(Time.timeScale, 0f))
+        // Oyun baska bir sey tarafindan zaten durdurulmussa (duraklatma menusu,
+        // Game Over / Kazandin) rehberi acma; kapanista timeScale'i yanlis yuklerdik.
+        if (Mathf.Approximately(Time.timeScale, 0f) || GameSession.Ended)
         {
             return;
         }
 
         isOpen = true;
-        previousTimeScale = Time.timeScale;
-
-        infoPanel.SetActive(true);
-        canvasGroup.blocksRaycasts = true;
+        MarkSeen();
 
         if (pauseWhileOpen)
         {
             Time.timeScale = 0f;
         }
 
-        StartAnimation(Animate(0f, 1f, startScale, 1f, false));
+        guide.Show(page);
     }
 
     /// <summary>
     /// Duraklatma menusunden acar. Oyun zaten durdugu icin timeScale'e dokunmaz;
-    /// panel kapaninca onClosed cagrilir.
+    /// rehber kapaninca onClosed cagrilir.
     /// </summary>
     public void OpenFromPause(System.Action onClosed)
     {
-        if (isOpen || !enabled)
+        if (isOpen || !enabled || guide == null)
         {
             onClosed?.Invoke();
             return;
@@ -161,27 +121,29 @@ public class InfoPanelManager : MonoBehaviour
         isOpen = true;
         openedFromPause = true;
         onClosedFromPause = onClosed;
+        MarkSeen();
 
-        infoPanel.SetActive(true);
-        canvasGroup.blocksRaycasts = true;
-
-        StartAnimation(Animate(0f, 1f, startScale, 1f, false));
+        guide.Show(-1);
     }
 
     private void Close()
     {
+        if (!isOpen)
+        {
+            return;
+        }
+
         isOpen = false;
         LastClosedFrame = Time.frameCount;
-        canvasGroup.blocksRaycasts = false;
 
         if (pauseWhileOpen && !openedFromPause)
         {
-            // Her zaman 1'e don. previousTimeScale, panel bir hitstop aninda
-            // acildiysa yavaslatilmis degeri tutabilir.
+            // Her zaman 1'e don; rehber bir hitstop aninda acildiysa onceki deger
+            // yavaslatilmis olabilir.
             Time.timeScale = 1f;
         }
 
-        StartAnimation(Animate(canvasGroup.alpha, 0f, 1f, startScale, true));
+        guide.Hide();
 
         if (openedFromPause)
         {
@@ -192,158 +154,12 @@ public class InfoPanelManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Paneli yeni arayuz temasina uydurur ve HUD'un ustunde cizilmesini saglar.
-    /// Panel eski, sabit piksel boyutlu canvas'ta oldugu icin kendi sirasini alir.
-    /// </summary>
-    private void ApplyTheme()
+    private static void MarkSeen()
     {
-        UnityEngine.UI.Image background = infoPanel.GetComponent<UnityEngine.UI.Image>();
-        if (background != null)
+        if (PlayerPrefs.GetInt(GuideSeenKey, 0) == 0)
         {
-            background.color = new Color(0.04f, 0.05f, 0.07f, 0.95f);
+            PlayerPrefs.SetInt(GuideSeenKey, 1);
+            PlayerPrefs.Save();
         }
-
-        Canvas overrideCanvas = infoPanel.GetComponent<Canvas>();
-        if (overrideCanvas == null)
-        {
-            overrideCanvas = infoPanel.AddComponent<Canvas>();
-            infoPanel.AddComponent<UnityEngine.UI.GraphicRaycaster>();
-        }
-        overrideCanvas.overrideSorting = true;
-        overrideCanvas.sortingOrder = 55;
-    }
-
-    private void StartAnimation(IEnumerator routine)
-    {
-        if (activeAnimation != null)
-        {
-            StopCoroutine(activeAnimation);
-        }
-        activeAnimation = StartCoroutine(routine);
-    }
-
-    private IEnumerator Animate(float fromAlpha, float toAlpha, float fromScale, float toScale, bool disableAtEnd)
-    {
-        float elapsed = 0f;
-
-        while (elapsed < fadeDuration)
-        {
-            // Oyun duraklatildigi icin olceklenmemis zaman kullanilmali.
-            elapsed += Time.unscaledDeltaTime;
-            float k = fadeDuration <= 0f ? 1f : Mathf.Clamp01(elapsed / fadeDuration);
-            float eased = 1f - (1f - k) * (1f - k); // ease-out quad
-
-            canvasGroup.alpha = Mathf.Lerp(fromAlpha, toAlpha, eased);
-
-            if (panelRect != null)
-            {
-                panelRect.localScale = Vector3.one * Mathf.Lerp(fromScale, toScale, eased);
-            }
-
-            yield return null;
-        }
-
-        canvasGroup.alpha = toAlpha;
-        if (panelRect != null)
-        {
-            panelRect.localScale = Vector3.one * toScale;
-        }
-
-        if (disableAtEnd)
-        {
-            infoPanel.SetActive(false);
-        }
-
-        activeAnimation = null;
-    }
-
-    /// <summary>
-    /// Metin alanini panele oturtur. Sahnedeki RectTransform 200x50 boyutunda,
-    /// merkeze sabitlenmis ve negatif margin'lerle disari tasirilmis durumdaydi;
-    /// burada panele tam yayilan, esit bosluklu bir alana cevriliyor.
-    /// Sahne dosyasi degismez, ayar yalnizca calisma zamaninda uygulanir.
-    /// </summary>
-    private void ApplyLayout()
-    {
-        RectTransform tr = infoText.rectTransform;
-
-        tr.localScale = Vector3.one;
-        tr.anchorMin = Vector2.zero;
-        tr.anchorMax = Vector2.one;
-        tr.pivot = new Vector2(0.5f, 0.5f);
-        tr.offsetMin = new Vector2(padding, padding);    // sol, alt
-        tr.offsetMax = new Vector2(-padding, -padding);  // sag, ust
-
-        infoText.margin = Vector4.zero;
-        infoText.alignment = TextAlignmentOptions.TopLeft;
-    }
-
-    /// <summary>Panelin zengin metin icerigini olusturur.</summary>
-    private string BuildContent()
-    {
-        StringBuilder sb = new StringBuilder(1600);
-
-        // ---- Baslik ----
-        sb.AppendLine($"<align=center><size=42><b><color={ColTitle}>OYUN REHBERİ</color></b></size>");
-        sb.AppendLine($"<size=18><color={ColMuted}>I veya ESC ile kapat   •   Rehber açıkken oyun duraklar</color></size></align>");
-        sb.AppendLine("<size=14> </size>");
-
-        // ---- Kontroller ----
-        sb.AppendLine(Section("KONTROLLER"));
-        sb.AppendLine(Row("A", "D", "Sola / sağa hareket"));
-        sb.AppendLine(Row("SPACE", null, "Zıpla — havadayken bir kez daha zıplayabilirsin"));
-        sb.AppendLine(Row("E", null, "Saldır — dururken ve koşarken farklı animasyon"));
-        sb.AppendLine(Row("H", null, "Görünmez ol — kısa süreli, sınırlı hakkın var"));
-        sb.AppendLine(Row("F", null, "Basılı tut — son NPC'yi kurtar ve oyunu kazan"));
-        sb.AppendLine(Row("ESC", null, "Duraklat — devam et, yeniden başla, ana menü"));
-        sb.AppendLine("<size=14> </size>");
-
-        // ---- Iksirler ----
-        sb.AppendLine(Section("İKSİRLER"));
-        sb.AppendLine(Potion(ColRed, "Kırmızı — Can İksiri", "Canını doldurur."));
-        sb.AppendLine(Potion(ColGreen, "Yeşil — Zehir İksiri", "Yanlışlıkla alırsan canını azaltır. Uzak dur."));
-        sb.AppendLine(Potion(ColYellow, "Sarı — Güç İksiri", "Saldırı gücünü kalıcı olarak artırır."));
-        sb.AppendLine("<size=14> </size>");
-
-        // ---- Tehlikeler ----
-        sb.AppendLine(Section("DİKKAT ET"));
-        sb.AppendLine(Bullet("Düşmanlar seni görünce takip eder ve yaklaşınca vurur."));
-        sb.AppendLine(Bullet("Bazı platformlar üzerine basınca kısa süre sonra düşer."));
-        sb.AppendLine(Bullet("Ateş, içinde durduğun sürece düzenli hasar verir."));
-        sb.AppendLine(Bullet("Haritadan aşağı düşersen oyun biter."));
-
-        return sb.ToString();
-    }
-
-    private string Section(string title)
-    {
-        return $"<size=26><b><color={ColSection}>|  {title}</color></b></size>";
-    }
-
-    private string Row(string key1, string key2, string description)
-    {
-        string keys = Key(key1);
-        if (!string.IsNullOrEmpty(key2))
-        {
-            keys += $"<color={ColMuted}> / </color>{Key(key2)}";
-        }
-        return $"<size=20>   {keys}<color={ColMuted}>   —   </color><color={ColBody}>{description}</color></size>";
-    }
-
-    private string Key(string k)
-    {
-        return $"<b><color={ColKey}>[{k}]</color></b>";
-    }
-
-    private string Potion(string color, string title, string description)
-    {
-        return $"<size=20>   <b><color={color}>●  {title}</color></b>\n"
-             + $"          <color={ColBody}>{description}</color></size>";
-    }
-
-    private string Bullet(string text)
-    {
-        return $"<size=20>   <color={ColSection}>›</color>   <color={ColBody}>{text}</color></size>";
     }
 }

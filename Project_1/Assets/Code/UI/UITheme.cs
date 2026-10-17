@@ -45,7 +45,93 @@ public static class UITheme
     /// <summary>Tum kodla olusturulan canvas'larin referans cozunurlugu.</summary>
     public static readonly Vector2 ReferenceResolution = new Vector2(1920f, 1080f);
 
-    public static TMP_FontAsset Font => TMP_Settings.defaultFontAsset;
+    // ---- Yazi tipi (Exo 2, OFL lisansli; Assets/Resources/Fonts) ----
+
+    public enum Weight
+    {
+        Regular,
+        SemiBold,
+        ExtraBold
+    }
+
+    private static TMP_FontAsset fontRegular;
+    private static TMP_FontAsset fontSemiBold;
+    private static TMP_FontAsset fontExtraBold;
+
+    /// <summary>Govde metni yazi tipi.</summary>
+    public static TMP_FontAsset Font => GetFont(Weight.Regular);
+
+    /// <summary>
+    /// Istenen agirlikta Exo 2. TTF'ler Resources'ta; TMP font varligi calisma
+    /// aninda dinamik olarak uretilir, editorde Font Asset Creator gerekmez.
+    /// Dosya bulunamazsa TMP'nin varsayilan yazi tipine donulur.
+    /// </summary>
+    public static TMP_FontAsset GetFont(Weight weight)
+    {
+        if (fontRegular == null || fontSemiBold == null || fontExtraBold == null)
+        {
+            LoadFonts();
+        }
+
+        switch (weight)
+        {
+            case Weight.SemiBold: return fontSemiBold;
+            case Weight.ExtraBold: return fontExtraBold;
+            default: return fontRegular;
+        }
+    }
+
+    private static void LoadFonts()
+    {
+        TMP_FontAsset fallback = TMP_Settings.defaultFontAsset;
+
+        fontRegular = CreateFont("Exo2-Regular", fallback);
+        fontSemiBold = CreateFont("Exo2-SemiBold", fallback);
+        fontExtraBold = CreateFont("Exo2-ExtraBold", fallback);
+
+        // Zengin metindeki <b>, sahte kalinlastirma yerine gercek kalin dosyayi kullansin.
+        SetBoldTypeface(fontRegular, fontSemiBold);
+        SetBoldTypeface(fontSemiBold, fontExtraBold);
+    }
+
+    private static TMP_FontAsset CreateFont(string resourceName, TMP_FontAsset fallback)
+    {
+        Font source = Resources.Load<Font>("Fonts/" + resourceName);
+        if (source == null)
+        {
+            Debug.LogWarning($"UITheme: Resources/Fonts/{resourceName} bulunamadi, varsayilan yazi tipi kullaniliyor.");
+            return fallback;
+        }
+
+        TMP_FontAsset asset = TMP_FontAsset.CreateFontAsset(source, 90, 9,
+            UnityEngine.TextCore.LowLevel.GlyphRenderMode.SDFAA, 1024, 1024);
+        if (asset == null)
+        {
+            return fallback;
+        }
+
+        asset.name = resourceName + " (Runtime)";
+        if (fallback != null && fallback != asset)
+        {
+            // Exo 2'de olmayan karakterler (ok isaretleri vb.) LiberationSans'tan gelsin.
+            asset.fallbackFontAssetTable = new List<TMP_FontAsset> { fallback };
+        }
+        return asset;
+    }
+
+    private static void SetBoldTypeface(TMP_FontAsset regular, TMP_FontAsset bold)
+    {
+        if (regular == null || bold == null || regular == bold)
+        {
+            return;
+        }
+
+        TMP_FontWeightPair[] table = regular.fontWeightTable;
+        if (table != null && table.Length > 7)
+        {
+            table[7].regularTypeface = bold;
+        }
+    }
 
     private static Color Hex(int rgb, float a = 1f)
     {
@@ -223,22 +309,50 @@ public static class UITheme
         return img;
     }
 
+    /// <summary>bold = true yari kalin (SemiBold) dosyayi kullanir.</summary>
     public static TextMeshProUGUI Text(string name, Transform parent, string text, float size, Color color,
         bool bold = false, TextAlignmentOptions alignment = TextAlignmentOptions.Left)
     {
+        return Text(name, parent, text, size, color, bold ? Weight.SemiBold : Weight.Regular, alignment);
+    }
+
+    public static TextMeshProUGUI Text(string name, Transform parent, string text, float size, Color color,
+        Weight weight, TextAlignmentOptions alignment = TextAlignmentOptions.Left)
+    {
         RectTransform rt = Rect(name, parent);
         TextMeshProUGUI label = rt.gameObject.AddComponent<TextMeshProUGUI>();
-        if (Font != null)
+
+        TMP_FontAsset font = GetFont(weight);
+        if (font != null)
         {
-            label.font = Font;
+            label.font = font;
         }
         label.text = text;
         label.fontSize = size;
         label.color = color;
-        label.fontStyle = bold ? FontStyles.Bold : FontStyles.Normal;
+        // Agirlik dosyadan geliyor; FontStyles.Bold sahte kalinlastirma yapardi.
+        label.fontStyle = FontStyles.Normal;
         label.alignment = alignment;
         label.richText = true;
         label.raycastTarget = false;
+        return label;
+    }
+
+    /// <summary>Ekran basliklari: en kalin agirlik, hafif sikistirilmis harf araligi.</summary>
+    public static TextMeshProUGUI Heading(string name, Transform parent, string text, float size, Color color,
+        TextAlignmentOptions alignment = TextAlignmentOptions.Left)
+    {
+        TextMeshProUGUI label = Text(name, parent, text, size, color, Weight.ExtraBold, alignment);
+        label.characterSpacing = -1f;
+        return label;
+    }
+
+    /// <summary>Basligin ustundeki kucuk, aralikli buyuk harfli etiket.</summary>
+    public static TextMeshProUGUI Overline(string name, Transform parent, string text, Color color,
+        TextAlignmentOptions alignment = TextAlignmentOptions.Left)
+    {
+        TextMeshProUGUI label = Text(name, parent, text, 20f, color, Weight.SemiBold, alignment);
+        label.characterSpacing = 9f;
         return label;
     }
 
@@ -338,11 +452,12 @@ public static class UITheme
     }
 
     /// <summary>Klavye tusu rozeti: "[F]" yerine kutu icinde harf.</summary>
-    public static Image KeyBadge(Transform parent, string key)
+    public static Image KeyBadge(Transform parent, string key, float height = 40f)
     {
+        float fontSize = height * 0.5f;
         Image badge = Panel("Key " + key, parent, Accent, RadiusSmall);
-        Layout(badge.gameObject, Mathf.Max(40f, 16f + key.Length * 14f), 40f);
-        TextMeshProUGUI t = Text("Text", badge.transform, key, 20f, OnAccent, true, TextAlignmentOptions.Center);
+        Layout(badge.gameObject, Mathf.Max(height, height * 0.4f + key.Length * fontSize * 0.68f), height);
+        TextMeshProUGUI t = Text("Text", badge.transform, key, fontSize, OnAccent, Weight.ExtraBold, TextAlignmentOptions.Center);
         Stretch(t.rectTransform);
         return badge;
     }

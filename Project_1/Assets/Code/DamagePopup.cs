@@ -13,7 +13,7 @@ public class DamagePopup : MonoBehaviour
 
     public static void Spawn(Vector3 worldPosition, int amount, Color color)
     {
-        TMP_FontAsset font = TMP_Settings.defaultFontAsset;
+        TMP_FontAsset font = UITheme.GetFont(UITheme.Weight.ExtraBold);
         if (font == null)
         {
             return;
@@ -27,7 +27,7 @@ public class DamagePopup : MonoBehaviour
         label.text = amount.ToString();
         label.color = color;
         label.fontSize = 4f;
-        label.fontStyle = FontStyles.Bold;
+        label.fontStyle = FontStyles.Normal; // Agirlik ExtraBold dosyasindan geliyor.
         label.alignment = TextAlignmentOptions.Center;
         label.rectTransform.sizeDelta = new Vector2(4f, 2f);
 
