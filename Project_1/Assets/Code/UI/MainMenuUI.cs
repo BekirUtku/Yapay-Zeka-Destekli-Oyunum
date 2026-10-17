@@ -26,6 +26,11 @@ public class MainMenuUI : MonoBehaviour
     private RectTransform glowA;
     private RectTransform glowB;
 
+    private CanvasGroup contentGroup;
+    private RectTransform contentRect;
+    private Vector2 contentPosition;
+    private float introStart;
+
     private Button playButton;
     private CanvasGroup helpGroup;
     private RectTransform helpCard;
@@ -60,6 +65,7 @@ public class MainMenuUI : MonoBehaviour
     {
         Canvas canvas = UITheme.CreateCanvas(transform, "MainMenu", 5);
         BuildBackground(canvas.transform);
+        MenuShowcase.Create(canvas.transform);
         BuildContent(canvas.transform);
         BuildFooter(canvas.transform);
         BuildHelp(canvas.transform);
@@ -118,6 +124,13 @@ public class MainMenuUI : MonoBehaviour
         UITheme.Place(column, new Vector2(0f, 0.5f), new Vector2(0f, 0.5f), new Vector2(170f, 10f), new Vector2(960f, 0f));
         UITheme.VStack(column.gameObject, 0, 14f, TextAnchor.MiddleLeft, false);
         UITheme.FitHeight(column.gameObject);
+
+        // Giris animasyonu icin.
+        contentRect = column;
+        contentPosition = column.anchoredPosition;
+        contentGroup = column.gameObject.AddComponent<CanvasGroup>();
+        contentGroup.alpha = 0f;
+        introStart = Time.unscaledTime;
 
         TextMeshProUGUI tagline = UITheme.Overline("Tagline", column, Tagline, UITheme.Accent);
         tagline.fontSize = 22f;
@@ -219,11 +232,25 @@ public class MainMenuUI : MonoBehaviour
     void Update()
     {
         AnimateBackground();
+        AnimateIntro();
 
         if (helpOpen && Input.GetKeyDown(KeyCode.Escape))
         {
             CloseHelp();
         }
+    }
+
+    /// <summary>Baslik sutunu soldan kayarak belirir.</summary>
+    private void AnimateIntro()
+    {
+        if (contentGroup == null || contentGroup.alpha >= 1f)
+        {
+            return;
+        }
+
+        float k = UIAnim.EaseOutCubic(Mathf.Clamp01((Time.unscaledTime - introStart) / 0.7f));
+        contentGroup.alpha = k;
+        contentRect.anchoredPosition = contentPosition + new Vector2(-50f * (1f - k), 0f);
     }
 
     private void AnimateBackground()
